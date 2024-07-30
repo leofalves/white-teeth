@@ -1,6 +1,6 @@
 package br.com.whiteteeth.api.enums;
 
-public enum Speciallity {
+public enum Speciality {
     ORTHODONTIST,
     ENDODONTICS,
     PERIODONTICS,
