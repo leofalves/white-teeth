@@ -19,6 +19,10 @@ public class Doctor {
     private Long id;
     private String name;
     private String email;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     private String cro;
 
     @Enumerated(EnumType.STRING)
@@ -30,6 +34,7 @@ public class Doctor {
     public Doctor(doctorDto data) {
         this.name = data.name();
         this.email = data.email();
+        this.phoneNumber = data.phoneNumber();
         this.cro = data.cro();
         this.speciality = data.speciality();
         this.address = new Address(data.address());

@@ -3,6 +3,7 @@ package br.com.whiteteeth.api.controllers;
 import br.com.whiteteeth.api.dto.doctorDto;
 import br.com.whiteteeth.api.entities.Doctor;
 import br.com.whiteteeth.api.repositories.DoctorRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,8 @@ public class DoctorController {
     DoctorRepository doctorRepository;
 
     @PostMapping
-    public void insertDoctor(@RequestBody doctorDto data){
+    public void insertDoctor(@RequestBody @Valid doctorDto data){
+
         doctorRepository.save(new Doctor(data));
     }
 }
