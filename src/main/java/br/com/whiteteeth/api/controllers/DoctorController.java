@@ -6,6 +6,9 @@ import br.com.whiteteeth.api.entities.Doctor;
 import br.com.whiteteeth.api.repositories.DoctorRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +28,7 @@ public class DoctorController {
     }
 
     @GetMapping
-    public List<DoctorListDto> listDoctor() {
-        return doctorRepository.findAll().stream().map(DoctorListDto::new).toList();
+    public Page<DoctorListDto> listDoctor(@PageableDefault(size = 1,page = 0, sort = {"name"}) Pageable pageable) {
+        return doctorRepository.findAll(pageable).map(DoctorListDto::new);
     }
 }
