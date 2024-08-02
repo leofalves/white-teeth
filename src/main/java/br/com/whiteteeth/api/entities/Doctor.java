@@ -1,6 +1,6 @@
 package br.com.whiteteeth.api.entities;
 
-import br.com.whiteteeth.api.dto.doctorDto;
+import br.com.whiteteeth.api.dto.DoctorDto;
 import br.com.whiteteeth.api.enums.Speciality;
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,7 +31,7 @@ public class Doctor {
     @Embedded // no banco de dados o endereço será armazenado na mesma tabela de doctors
     private Address address;
 
-    public Doctor(doctorDto data) {
+    public Doctor(DoctorDto data) {
         this.name = data.name();
         this.email = data.email();
         this.phoneNumber = data.phoneNumber();
