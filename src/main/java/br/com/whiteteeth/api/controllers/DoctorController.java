@@ -2,6 +2,7 @@ package br.com.whiteteeth.api.controllers;
 
 import br.com.whiteteeth.api.dto.DoctorDto;
 import br.com.whiteteeth.api.dto.DoctorListDto;
+import br.com.whiteteeth.api.dto.DoctorUpdDto;
 import br.com.whiteteeth.api.entities.Doctor;
 import br.com.whiteteeth.api.repositories.DoctorRepository;
 import jakarta.validation.Valid;
@@ -30,5 +31,14 @@ public class DoctorController {
     @GetMapping
     public Page<DoctorListDto> listDoctor(@PageableDefault(size = 1,page = 0, sort = {"name"}) Pageable pageable) {
         return doctorRepository.findAll(pageable).map(DoctorListDto::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void updateDoctor(@RequestBody @Valid DoctorUpdDto data) {
+        var doctor = doctorRepository.getReferenceById(data.id());
+
+        doctor.updateData(data);
+
     }
 }

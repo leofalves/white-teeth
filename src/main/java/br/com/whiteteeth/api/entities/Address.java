@@ -26,4 +26,25 @@ public class Address {
         this.state = data.state();
         this.number = Integer.valueOf(data.number());
     }
+
+    public void updateData(AddressDto addressDto) {
+        if(addressDto.line1() != null){
+            this.line1 = addressDto.line1();
+        }
+        if(addressDto.line2() != null){
+            this.line2 = addressDto.line2();
+        }
+        if(addressDto.zipCode() != null){
+            this.zipcode = addressDto.zipCode();
+        }
+        if(addressDto.city() != null){
+            this.city = addressDto.city();
+        }
+        if(addressDto.state() != null){
+            this.state = addressDto.state();
+        }
+        if(addressDto.number() != null){
+            this.number = Integer.valueOf(addressDto.number());
+        }
+    }
 }

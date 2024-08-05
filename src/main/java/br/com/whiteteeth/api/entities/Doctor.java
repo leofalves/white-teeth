@@ -1,6 +1,7 @@
 package br.com.whiteteeth.api.entities;
 
 import br.com.whiteteeth.api.dto.DoctorDto;
+import br.com.whiteteeth.api.dto.DoctorUpdDto;
 import br.com.whiteteeth.api.enums.Speciality;
 import jakarta.persistence.*;
 import lombok.*;
@@ -38,5 +39,17 @@ public class Doctor {
         this.cro = data.cro();
         this.speciality = data.speciality();
         this.address = new Address(data.address());
+    }
+
+    public void updateData(DoctorUpdDto data) {
+        if(data.name() != null){
+            this.name = data.name();
+        }
+        if(data.phoneNumber() != null){
+            this.phoneNumber = data.phoneNumber();
+        }
+        if(data.address() != null){
+            this.address.updateData(data.address());
+        }
     }
 }
